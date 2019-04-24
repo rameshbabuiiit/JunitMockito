@@ -39,7 +39,7 @@ public class MainControllerTest {
 	}
 
 	@Test
-	public void testPostEmp_checkStatus() throws Exception {
+	public void testSetEmp_checkStatus() throws Exception {
 		
 		//dummy Object
 		Employee mockEmp = new Employee(111,"remo","10000");
@@ -57,7 +57,7 @@ public class MainControllerTest {
 	}
 
 	@Test
-	public void testGetEmp_checkStatusAndValidateName() throws Exception {
+	public void testGetEmpById_checkStatusAndValidateName() throws Exception {
 		
 		int id = 123458;
 		Employee mockEmp = new Employee(id,"ramesh","12345");
