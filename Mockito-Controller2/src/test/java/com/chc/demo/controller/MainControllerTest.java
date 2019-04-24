@@ -39,16 +39,17 @@ public class MainControllerTest {
 	}
 
 	@Test
-	public void testPostEmp_checkStatus() throws Exception {		
-		Employee mockEmp = new Employee();
-		mockEmp.setId(1111);
-		mockEmp.setName("remo");
-		mockEmp.setSal("10000");
-
+	public void testPostEmp_checkStatus() throws Exception {
+		
+		//dummy Object
+		Employee mockEmp = new Employee(111,"remo","10000");
+		
 		// Object to Json
 		String inputInJson = utils.mapToJson(mockEmp);
 
 		String URI = "/emp/";
+		
+		//dummy implementation
 		Mockito.when(employeeInfo.create(Mockito.any(Employee.class))).thenReturn(mockEmp);
 
 		mockMvc.perform(MockMvcRequestBuilders.post(URI).contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -56,13 +57,12 @@ public class MainControllerTest {
 	}
 
 	@Test
-	public void testGetEmp_checkStatus() throws Exception {
+	public void testGetEmp_checkStatusAndValidateName() throws Exception {
+		
 		int id = 123458;
-		Employee mockEmp = new Employee();
-		mockEmp.setId(id);
-		mockEmp.setName("ramesh");
-		mockEmp.setSal("12345");
-
+		Employee mockEmp = new Employee(id,"ramesh","12345");
+		
+		//dummy implementation
 		Mockito.when(employeeInfo.getEmpById(Mockito.any(Integer.class))).thenReturn(mockEmp);
 		
 		mockMvc.perform(MockMvcRequestBuilders.get("/emp/{id}", id).accept(MediaType.APPLICATION_JSON)).andDo(print())
